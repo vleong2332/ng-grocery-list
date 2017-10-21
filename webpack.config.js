@@ -1,8 +1,18 @@
 module.exports = {
   context: __dirname + '/src',
-  entry: './index.js',
+  entry: './index.ts',
   output: {
     path: __dirname + '/src',
     filename: 'bundle.js'
+  },
+  devtool: 'source-map',
+  resolve: {
+    extensions: ['.ts', '.js']
+  },
+  module: {
+    rules: [
+      { test: /\.ts$/, loader: 'awesome-typescript-loader' },
+      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' }
+    ]
   }
 };
