@@ -4,5 +4,9 @@
   "main": "src/index.js",
   "author": "vleong2332 <vleong2332@gmail.com>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.3"
+  }
 }
