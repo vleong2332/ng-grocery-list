@@ -1,4 +1,6 @@
-module.exports = {
+const webpack = require('webpack');
+
+const config = {
   context: __dirname + '/src',
   entry: './index.ts',
   output: {
@@ -11,9 +13,20 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.ts$/, loader: 'awesome-typescript-loader' },
+      { test: /\.ts$/, loader: 'ng-annotate-loader!awesome-typescript-loader' },
       { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
       { test: /\.less$/, loader: 'style-loader!css-loader!less-loader' },
     ]
-  }
+  },
+  plugins: [
+
+  ]
 };
+
+if (process.env.NODE_ENV === 'production') {
+  config.output.path = __dirname + '/dist';
+  // NOTE: Minify once you figure out why ng-annotate-loader is not working
+  // config.plugins.push(new webpack.optimize.UglifyJsPlugin());
+}
+
+module.exports = config;

@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "removeComments": false,
+    "sourceMap": true,
     "types": [
       "node"
     ],

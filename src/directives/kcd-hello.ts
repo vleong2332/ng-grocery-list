@@ -1,10 +1,16 @@
-const kcdHello = (testService) => {
+import { TestService } from '../services/testService';
+
+const kcdHello = function($log: angular.ILogService, testService: TestService) {
   require('./kcd-hello.less');
   return {
     restrict: 'E',
     scope: {},
     template,
-    controller,
+    controller: function (testService: TestService) {
+      let vm = this;
+      vm.greeting = testService.getMessage();
+      $log.info('hello, there');
+    },
     controllerAs: 'vm',
   };
 };
@@ -15,10 +21,5 @@ const template = `
     {{vm.greeting}}
   </div>
 `;
-
-function controller(testService) {
-  let vm = this;
-  vm.greeting = testService.getMessage();
-}
 
 export default kcdHello;
