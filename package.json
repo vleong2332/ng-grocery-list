@@ -1,0 +1,8 @@
+{
+  "name": "grocery-list",
+  "version": "0.0.0",
+  "main": "index.js",
+  "author": "vleong2332 <vleong2332@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
