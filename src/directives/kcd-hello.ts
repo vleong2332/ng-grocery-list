@@ -1,12 +1,22 @@
-const kcdHello = (testService) => ({
-  restrict: 'E',
-  scope: {},
-  templateUrl: 'directives/kcd-hello.html',
-  controllerAs: 'vm',
-  controller: kcdHelloController,
-});
+const kcdHello = (testService) => {
+  require('./kcd-hello.less');
+  return {
+    restrict: 'E',
+    scope: {},
+    template,
+    controller,
+    controllerAs: 'vm',
+  };
+};
 
-function kcdHelloController(testService) {
+const template = `
+  <div class="kcd-hello">
+    <p>muahahaha</test>
+    {{vm.greeting}}
+  </div>
+`;
+
+function controller(testService) {
   let vm = this;
   vm.greeting = testService.getMessage();
 }
