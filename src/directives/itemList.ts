@@ -1,29 +1,24 @@
-// import { TestService } from '../services/testService';
+import { DataService, Item } from '../services/dataService';
 
-const kcdHello = function() {
+const itemList = function() {
   // require('./kcd-hello.less');
   return {
     restrict: 'E',
-    scope: {
-      items: '='
-    },
+    scope: false,
     template,
-    controller: function () {
-      let vm = this;
-      // vm.greeting = testService.getMessage();
-      // $log.info('hello, there');
-    },
-    controllerAs: 'vm',
   };
 };
 
 const template = `
-  <div class="item-list">
-    <h3>Item List</h3>
-    <p ng-repeat="item in items">
-      {{n.id}} - {{n.text}} - {{n.isBought}}
-    </p>
-  </div>
+  <ul class="item-list">
+    <li
+      class="item"
+      ng-repeat="item in vm.items"
+      ng-click="vm.onItemClick(item)"
+    >
+      <div>{{item.id}} - {{item.text}} - {{item.isPurchased}}</div>
+    </li>
+  </ul>
 `;
 
-export default kcdHello;
+export default itemList;

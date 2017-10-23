@@ -7,6 +7,7 @@ export default {
     const directives = {
       itemsNeeded,
       itemsPurchased,
+      itemList,
     }
 
     Object.keys(directives).forEach(key => {
