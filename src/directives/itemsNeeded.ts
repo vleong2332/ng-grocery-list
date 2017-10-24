@@ -16,7 +16,7 @@ const template = `
     <h1>Items Needed</h1>
     <item-list
       items="vm.items"
-      on-item-click="vm.onItemClick"
+      refresh-items="vm.refreshItems()"
     ></item-list>
   </div>
 `;
@@ -24,17 +24,12 @@ const template = `
 function controller(dataService: DataService) {
   let vm = this;
   vm.items = [];
-  vm.onItemClick = onItemClick;
+  vm.refreshItems = refreshItems;
 
   refreshItems();
 
   function refreshItems(): void {
     vm.items = dataService.getNeededItems();
-  }
-
-  function onItemClick(item: Item) {
-    dataService.toggleItem(item.id);
-    refreshItems();
   }
 }
 
