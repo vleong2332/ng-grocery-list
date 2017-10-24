@@ -11,6 +11,7 @@ export class DataService {
   addItem: (item: Item) => void;
   removeItem: (id: number) => void;
   toggleItem: (id: number) => void;
+  editItem: (id: number, text: string) => void;
 }
 
 export default function dataService(): DataService{
@@ -28,6 +29,7 @@ export default function dataService(): DataService{
     addItem,
     removeItem,
     toggleItem,
+    editItem,
   };
 
   function getAllItems(): Item[] {
@@ -52,10 +54,22 @@ export default function dataService(): DataService{
 
   function toggleItem(id: number): void {
     items = items.map(i => {
+      console.log('matching id', i.id, id, i.id === id);
       if (i.id === id) {
+        console.log('matched');
         i.isPurchased = !i.isPurchased;
       }
       return i;
     });
+    console.log('toggled', id, items);
+  }
+
+  function editItem(id: number, text: string): void {
+    items = items.map(i => {
+      if (i.id === id) {
+        i.text = text;
+      }
+      return i;
+    })
   }
 }

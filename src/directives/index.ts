@@ -9,12 +9,13 @@ export default {
       itemsNeeded,
       itemsPurchased,
       // itemList,
+      item,
     }
 
     Object.keys(directives).forEach(key => {
       ngModule.directive(key, directives[key]);
     })
     ngModule.component('itemList', itemList);
-    ngModule.component('item', item);
+    // ngModule.component('item', item);
   },
 };

@@ -13,10 +13,10 @@ const itemsPurchased = function() {
 
 const template = `
   <div class="items-purchased">
-    <h1>Items Purchased</h1>
+    <h1>Items Purchased - {{ vm.items.length }}</h1>
     <item-list
       items="vm.items"
-      refresh-items="vm.refreshItems()"
+      refresh-items="vm.refreshItems"
     ></item-list>
     <button ng-click="vm.goToNeededItems()">Needed Items</button>
   </div>

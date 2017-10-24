@@ -13,19 +13,19 @@ const itemsNeeded = function() {
 
 const template = `
   <div class="items-needed">
-    <h1>Items Needed</h1>
+    <h1>Items Needed - {{ vm.items.length }}</h1>
     <item-list
       items="vm.items"
-      refresh-items="vm.refreshItems()"
+      refresh-items="vm.refreshItems"
     ></item-list>
     <button ng-click="vm.goToPurchasedItems()">Purchased Items</button>
   </div>
 `;
 
-function controller(dataService: DataService, $location: angular.ILocationService) {
+function controller(dataService: DataService, $location: angular.ILocationService, $scope: angular.IScope) {
   let vm = this;
   vm.items = [];
-  vm.refreshItems = refreshItems;
+  vm.refreshItems = refreshItems.bind(this);
   vm.goToPurchasedItems = goToPurchasedItems;
 
   refreshItems();
@@ -35,7 +35,6 @@ function controller(dataService: DataService, $location: angular.ILocationServic
   }
 
   function goToPurchasedItems(): void {
-    console.log('go to purchased items', $location);
     $location.path('/bought');
   }
 }
