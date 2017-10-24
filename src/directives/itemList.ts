@@ -22,11 +22,11 @@ const itemList = {
   template: `
     <ul class="item-list">
       <li class="item" ng-repeat="item in $ctrl.items">
-        <div>
-          {{item.text}}
-          <span ng-click="$ctrl.toggleItem(item.id)">Toggle</span>
-          <span ng-click="$ctrl.removeItem(item.id)">Delete</span>
-        </div>
+        <item
+          name="item.text"
+          on-toggle="$ctrl.toggleItem(item.id)"
+          on-delete="$ctrl.removeItem(item.id)"
+        />
       </li>
     </ul>
   `,

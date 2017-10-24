@@ -1,4 +1,5 @@
 import itemList from './itemList';
+import item from './item';
 import itemsNeeded from './itemsNeeded';
 import itemsPurchased from './itemsPurchased';
 
@@ -14,5 +15,6 @@ export default {
       ngModule.directive(key, directives[key]);
     })
     ngModule.component('itemList', itemList);
+    ngModule.component('item', item);
   },
 };
