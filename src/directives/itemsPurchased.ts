@@ -18,18 +18,24 @@ const template = `
       items="vm.items"
       refresh-items="vm.refreshItems()"
     ></item-list>
+    <button ng-click="vm.goToNeededItems()">Needed Items</button>
   </div>
 `;
 
-function controller(dataService: DataService) {
+function controller(dataService: DataService, $location: angular.ILocationService) {
   let vm = this;
   vm.items = [];
   vm.refreshItems = refreshItems;
+  vm.goToNeededItems = goToNeededItems;
 
   refreshItems();
 
   function refreshItems(): void {
     vm.items = dataService.getPurchasedItems();
+  }
+
+  function goToNeededItems(): void {
+    $location.path('/');
   }
 }
 
