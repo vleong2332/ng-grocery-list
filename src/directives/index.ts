@@ -7,11 +7,12 @@ export default {
     const directives = {
       itemsNeeded,
       itemsPurchased,
-      itemList,
+      // itemList,
     }
 
     Object.keys(directives).forEach(key => {
       ngModule.directive(key, directives[key]);
     })
+    ngModule.component('itemList', itemList);
   },
 };
