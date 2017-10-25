@@ -40,6 +40,7 @@ function controller(dataService: DataService, $scope: ParentScope) {
 
   function editName(): void {
     vm.isEditable = true;
+    vm.focusOnName();
   }
 
   function saveName(itemId: number): void {
@@ -55,15 +56,16 @@ function link(scope, el, attrs) {
   scope.vm.getItemName = function() {
     return el.children()[0].innerText;
   };
+  scope.vm.focusOnName = function() {
+    el.children()[0].focus();
+  };
 }
 
 const template = `
-  <div class="item">
-    <p class="item-name" contenteditable="{{!!vm.isEditable}}">{{name}}</p>
+  <div ng-class="{ item: true, 'is-purchased': isPurchased }">
+    <input type="text" class="item-name" ng-model="name" />
     <span ng-click="vm.toggleItem(id)">Toggle</span>
     <span ng-click="vm.removeItem(id)">Delete</span>
-    <span ng-hide="vm.isEditable" ng-click="vm.editName()">Edit</span>
-    <span ng-show="vm.isEditable" ng-click="vm.saveName(id)">Save</span>
   </div>
 `;
 

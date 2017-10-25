@@ -1,17 +1,6 @@
 import { DataService, Item } from '../services/dataService';
 
-interface ItemScope extends angular.IScope {
-  items: Item[];
-  refreshItems: () => void;
-  gotoPurchasedItems: () => void;
-  gotoNeededItems: () => void;
-}
-
-export default function controller(
-  dataService: DataService,
-  $location: angular.ILocationService,
-  $scope: ItemScope
-) {
+export default function controller(dataService: DataService) {
   let vm = this;
   vm.neededItems = [];
   vm.purchasedItems = [];

@@ -16,8 +16,8 @@ const itemsNeeded = function() {
 
 // function controller($scope) {
 //   let vm = this;
-//   vm.neededItems = $scope.items.filter(i => !i.isPurchased);
-//   console.log(this, $scope);
+//   vm.isAllDone = $scope.items.length <= 0;
+//   console.log($scope.items)
 //   // let vm = this;
 //   // vm.items = $scope.items;
 //   // vm.refreshItems = $scope.refreshItems;
@@ -33,7 +33,8 @@ const itemsNeeded = function() {
 
 const template = `
   <div class="items-needed">
-    <h1>Items Needed - {{ items.length }}</h1>
+    <h3 class="item-count" ng-show="items.length > 0">{{ items.length }} left</h3>
+    <h3 class="item-count" ng-show="items.length <= 0">All done!</h3>
     <item-list
       items="items"
       refresh-items="refreshItems"

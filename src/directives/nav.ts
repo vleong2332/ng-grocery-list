@@ -10,18 +10,25 @@ const nav = function() {
 };
 
 function controller($scope: angular.IScope, $location:angular.ILocationService) {
-  this.gotoNeededItems = gotoNeededItems;
-  this.gotoPurchasedItems = gotoPurchasedItems;
-  this.active = $location.path();
+  let vm = this;
+  vm.active;
+  vm.gotoNeededItems = gotoNeededItems;
+  vm.gotoPurchasedItems = gotoPurchasedItems;
+
+  setActivePath();
 
   function gotoPurchasedItems(): void {
     $location.path('/bought');
-    this.active = '/bought';
+    setActivePath();
   }
 
   function gotoNeededItems(): void {
     $location.path('/');
-    this.active = '/';
+    setActivePath();
+  }
+
+  function setActivePath(): void {
+    vm.active = $location.path();
   }
 }
 
