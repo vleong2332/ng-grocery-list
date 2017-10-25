@@ -8,9 +8,17 @@ export default function routing($routeProvider: angular.route.IRouteProvider) {
 };
 
 const itemsNeeded = {
-  template: `<items-needed></items-needed>`,
+  controller: 'itemsController',
+  controllerAs: 'vm',
+  template: `
+    <items-needed items="vm.neededItems" refresh-items="vm.refreshItems"></items-needed>
+  `,
 };
 
 const itemsPurchased = {
-  template: `<items-purchased></items-purchased>`,
+  controller: 'itemsController',
+  controllerAs: 'vm',
+  template: `
+    <items-purchased items="vm.purchasedItems" refresh-items="vm.refreshItems"></items-purchased>
+  `,
 };

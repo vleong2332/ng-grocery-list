@@ -1,3 +1,4 @@
+import nav from './nav';
 import itemList from './itemList';
 import item from './item';
 import itemsNeeded from './itemsNeeded';
@@ -10,6 +11,7 @@ export default {
       itemsPurchased,
       // itemList,
       item,
+      nav,
     }
 
     Object.keys(directives).forEach(key => {

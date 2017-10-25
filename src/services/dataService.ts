@@ -33,7 +33,7 @@ export default function dataService(): DataService{
   };
 
   function getAllItems(): Item[] {
-    return items.slice();
+    return items;
   }
 
   function getNeededItems(): Item[] {
@@ -54,14 +54,11 @@ export default function dataService(): DataService{
 
   function toggleItem(id: number): void {
     items = items.map(i => {
-      console.log('matching id', i.id, id, i.id === id);
       if (i.id === id) {
-        console.log('matched');
         i.isPurchased = !i.isPurchased;
       }
       return i;
     });
-    console.log('toggled', id, items);
   }
 
   function editItem(id: number, text: string): void {
