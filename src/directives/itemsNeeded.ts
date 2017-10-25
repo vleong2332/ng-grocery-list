@@ -8,33 +8,17 @@ const itemsNeeded = function() {
       items: '=',
       refreshItems: '=',
     },
-    // controllerAs: 'vm',
-    // controller,
     template,
   };
 };
-
-// function controller($scope) {
-//   let vm = this;
-//   vm.isAllDone = $scope.items.length <= 0;
-//   console.log($scope.items)
-//   // let vm = this;
-//   // vm.items = $scope.items;
-//   // vm.refreshItems = $scope.refreshItems;
-//   // vm.items = [];
-//   // vm.refreshItems = refreshItems;
-//   //
-//   // refreshItems();
-//   //
-//   // function refreshItems(): void {
-//   //   vm.items = dataService.getNeededItems();
-//   // }
-// }
 
 const template = `
   <div class="items-needed">
     <h3 class="item-count" ng-show="items.length > 0">{{ items.length }} left</h3>
     <h3 class="item-count" ng-show="items.length <= 0">All done!</h3>
+
+    <new-item-form></new-item-form>
+
     <item-list
       items="items"
       refresh-items="refreshItems"

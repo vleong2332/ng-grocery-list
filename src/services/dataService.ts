@@ -8,7 +8,7 @@ export class DataService {
   getAllItems: () => Item[];
   getNeededItems: () => Item[];
   getPurchasedItems: () => Item[];
-  addItem: (item: Item) => void;
+  addItem: (name: string) => void;
   removeItem: (id: number) => void;
   toggleItem: (id: number) => void;
   editItem: (id: number, text: string) => void;
@@ -44,8 +44,12 @@ export default function dataService(): DataService{
     return items.filter(i => i.isPurchased);
   }
 
-  function addItem(item: Item): void {
-    items.push(item);
+  function addItem(name: string): void {
+    items.push({
+      id: Date.now(),
+      text: name,
+      isPurchased: false,
+    });
   }
 
   function removeItem(id: number): void {
