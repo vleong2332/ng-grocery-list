@@ -17,8 +17,10 @@ function controller(dataService: DataService) {
   vm.addNewItem = addNewItem;
 
   function addNewItem(): void {
-    dataService.addItem(vm.newItemName);
-    vm.newItemName = '';
+    if (vm.newItemName.trim() !== '') {
+      dataService.addItem(vm.newItemName);
+      vm.newItemName = '';
+    }
   }
 }
 
