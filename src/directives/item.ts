@@ -1,12 +1,11 @@
 import { DataService } from '../services/dataService';
 
-function item() {
+export default function item() {
   return {
     scope: {
       id: '=',
       name: '=',
       isPurchased: '=',
-      refreshItems: '=',
     },
     controllerAs: 'vm',
     controller,
@@ -28,5 +27,3 @@ const template = `
     <span ng-click="vm.removeItem(id)">Delete</span>
   </div>
 `;
-
-export default item;

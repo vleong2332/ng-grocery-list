@@ -1,7 +1,6 @@
 import { DataService } from '../services/dataService';
 
-const newItemForm = function() {
-  // require('./kcd-hello.less');
+export default function newItemForm() {
   return {
     restrict: 'E',
     scope: {},
@@ -9,7 +8,7 @@ const newItemForm = function() {
     controller,
     template,
   };
-};
+}
 
 function controller(dataService: DataService) {
   let vm = this;
@@ -30,5 +29,3 @@ const template = `
     <button class="new-item-add" ng-click="vm.addNewItem()">Add</button>
   </div>
 `;
-
-export default newItemForm;

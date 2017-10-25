@@ -1,4 +1,4 @@
-const nav = function() {
+export default function nav() {
   return {
     restrict: 'E',
     scope: {},
@@ -7,9 +7,9 @@ const nav = function() {
     template,
     replace: true,
   };
-};
+}
 
-function controller($scope: angular.IScope, $location:angular.ILocationService) {
+function controller($location:angular.ILocationService) {
   let vm = this;
   vm.active;
   vm.gotoNeededItems = gotoNeededItems;
@@ -46,5 +46,3 @@ const template = `
     >Purchased</button>
   </div>
 `;
-
-export default nav;

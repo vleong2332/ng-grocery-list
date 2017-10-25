@@ -5,26 +5,16 @@ export default function routing($routeProvider: angular.route.IRouteProvider) {
     .otherwise({
       redirectTo: '/'
     });
-};
+}
 
 const itemsNeeded = {
   controller: 'itemsController',
   controllerAs: 'vm',
-  template: `
-    <items-needed
-      items="vm.neededItems"
-      refresh-items="vm.refreshItems"
-    ></items-needed>
-  `,
+  template: `<items-needed items="vm.neededItems"></items-needed>`,
 };
 
 const itemsPurchased = {
   controller: 'itemsController',
   controllerAs: 'vm',
-  template: `
-    <items-purchased
-      items="vm.purchasedItems"
-      refresh-items="vm.refreshItems"
-    ></items-purchased>
-  `,
+  template: `<items-purchased items="vm.purchasedItems"></items-purchased>`,
 };

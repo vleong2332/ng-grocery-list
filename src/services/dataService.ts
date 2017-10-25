@@ -1,10 +1,10 @@
-export class Item {
+export interface Item {
   id: number;
   text: string;
   isPurchased: boolean;
 }
 
-export class DataService {
+export interface DataService {
   getAllItems: () => Item[];
   getNeededItems: () => Item[];
   getPurchasedItems: () => Item[];

@@ -10,16 +10,14 @@ export default {
     const directives = {
       itemsNeeded,
       itemsPurchased,
-      // itemList,
+      itemList,
       item,
       nav,
       newItemForm,
-    }
+    };
 
     Object.keys(directives).forEach(key => {
       ngModule.directive(key, directives[key]);
-    })
-    ngModule.component('itemList', itemList);
-    // ngModule.component('item', item);
+    });
   },
 };
