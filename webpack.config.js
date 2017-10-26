@@ -9,13 +9,14 @@ const config = {
   },
   devtool: 'source-map',
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js', '.less', '.html']
   },
   module: {
     rules: [
       { test: /\.ts$/, loader: 'ng-annotate-loader!awesome-typescript-loader' },
       { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
       { test: /\.less$/, loader: 'style-loader!css-loader!less-loader' },
+      { test: /\.css$/, loader: 'style-loader!css-loader' },
     ]
   },
   plugins: [
