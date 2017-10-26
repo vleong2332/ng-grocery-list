@@ -1,3 +1,5 @@
+import '../style/nav.less';
+
 export default function nav() {
   return {
     restrict: 'E',
@@ -5,7 +7,6 @@ export default function nav() {
     controllerAs: 'vm',
     controller,
     template,
-    replace: true,
   };
 }
 
@@ -33,16 +34,17 @@ function controller($location:angular.ILocationService) {
 }
 
 const template = `
-  <div class="nav">
-    <button
+  <div class="nav" flex>
+    <span
+      class="nav-item md-display-1"
       ng-click="vm.gotoNeededItems()"
       ng-class="{ active: vm.active === '/' }"
-    >
-      Needed
-    </button>
-    <button
+    >Needed</span>
+    <span class="nav-separator md-display-1">|</span>
+    <span
+      class="nav-item md-display-1"
       ng-click="vm.gotoPurchasedItems()"
       ng-class="{ active: vm.active === '/bought' }"
-    >Purchased</button>
+    >Purchased</span>
   </div>
 `;

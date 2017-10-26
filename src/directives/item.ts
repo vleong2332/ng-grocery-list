@@ -1,4 +1,5 @@
 import { DataService } from '../services/dataService';
+import '../style/item.less';
 
 export default function item() {
   return {
@@ -21,9 +22,15 @@ function controller(dataService: DataService) {
 }
 
 const template = `
-  <div ng-class="{ item: true, 'is-purchased': isPurchased }">
-    <input type="text" class="item-name" ng-model="name" />
-    <span ng-click="vm.toggleItem(id)">Toggle</span>
-    <span ng-click="vm.removeItem(id)">Delete</span>
+  <div class="item" ng-class="{ 'is-purchased': isPurchased }" layout="row" layout-align="center center" flex>
+    <div class="item-toggle-wrapper" flex="none" layout="row" layout-align="center center">
+      <md-checkbox class="item-toggle" ng-model="isPurchased" ng-click="vm.toggleItem(id)"></md-checkbox>
+    </div>
+    <div class="item-name-wrapper" flex>
+      <input type="text" class="item-name" ng-model="name" />
+    </div>
+    <div class="item-delete-wrapper" flex="none">
+      <span class="item-delete md-secondary" ng-click="vm.removeItem(id)">Delete</span>
+    </div>
   </div>
 `;

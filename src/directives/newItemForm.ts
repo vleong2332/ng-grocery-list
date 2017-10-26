@@ -1,4 +1,5 @@
 import { DataService } from '../services/dataService';
+import '../style/newItemForm.less'
 
 export default function newItemForm() {
   return {
@@ -7,6 +8,7 @@ export default function newItemForm() {
     controllerAs: 'vm',
     controller,
     template,
+    replace: true,
   };
 }
 
@@ -24,8 +26,19 @@ function controller(dataService: DataService) {
 }
 
 const template = `
-  <div class="new-item">
-    <input class="new-item-name" type="text" ng-model="vm.newItemName" />
-    <button class="new-item-add" ng-click="vm.addNewItem()">Add</button>
+  <div class="new-item-form" layout="row" layout-align="center center">
+
+    <div class="new-item-name-wrapper" flex>
+      <md-input-container class="new-item-name" md-no-float>
+        <input type="text" ng-model="vm.newItemName" placeholder="Add a new item" />
+      </md-input-container>
+    </div>
+
+    <div class="new-item-add-wrapper" flex="none">
+      <md-button class="new-item-add md-raised md-primary" aria-label="Add" ng-click="vm.addNewItem()">
+        Add
+      </md-button>
+    </div>
+
   </div>
 `;

@@ -1,4 +1,5 @@
 import { DataService, Item } from '../services/dataService';
+import '../style/itemList.less';
 
 export default function itemList() {
   return {
@@ -7,15 +8,16 @@ export default function itemList() {
       items: '=',
     },
     template: `
-      <ul class="item-list">
-        <li class="item" ng-repeat="item in items">
+      <md-list class="item-list">
+        <md-list-item class="item-list-item" ng-repeat="item in items" md-whiteframe="3">
           <item
             id="item.id"
             name="item.text"
             is-purchased="item.isPurchased"
+            flex
           />
-        </li>
-      </ul>
+        </md-list-item>
+      </md-list>
     `,
   };
 };
