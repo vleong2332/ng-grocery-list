@@ -1,4 +1,4 @@
-import { DataService, Item } from '../services/dataService';
+import '../style/itemsPurchased.less';
 
 export default function itemsPurchased() {
   return {
@@ -7,8 +7,12 @@ export default function itemsPurchased() {
       items: '=',
     },
     template: `
-      <div class="items-purchased">
-        <h3>{{ items.length }} items purchased</h3>
+      <div class="items-purchased" layout="column" layout-align="center stretch">
+
+        <div class="item-count-wrapper" layout="row" layout-align="center">
+          <h3>{{ items.length }} items purchased</h3>
+        </div>
+
         <item-list items="items"></item-list>
       </div>
     `,

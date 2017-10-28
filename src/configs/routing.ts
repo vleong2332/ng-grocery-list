@@ -1,9 +1,9 @@
 export default function routing($routeProvider: angular.route.IRouteProvider) {
   $routeProvider
-    .when('/', itemsNeeded)
-    .when('/bought', itemsPurchased)
+    .when('/needed', itemsNeeded)
+    .when('/purchased', itemsPurchased)
     .otherwise({
-      redirectTo: '/'
+      redirectTo: '/needed'
     });
 }
 
@@ -17,9 +17,5 @@ const itemsPurchased = {
   controller: 'itemsController',
   controllerAs: 'vm',
   template: `
-    <items-purchased
-      layout="column"
-      layout-align="center stretch"
-      items="vm.purchasedItems"
-    ></items-purchased>`,
+    <items-purchased class="items-purchased-wrapper" items="vm.purchasedItems"></items-purchased>`,
 };

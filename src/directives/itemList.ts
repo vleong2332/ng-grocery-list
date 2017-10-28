@@ -9,14 +9,14 @@ export default function itemList() {
     },
     template: `
       <md-list class="item-list">
-        <md-list-item class="item-list-item" ng-repeat="item in items" md-whiteframe="3">
-          <item
-            id="item.id"
-            name="item.text"
-            is-purchased="item.isPurchased"
-            flex
-          />
-        </md-list-item>
+        <item
+          ng-repeat="item in items"
+          class="item-list-item"
+          id="item.id"
+          name="item.text"
+          is-purchased="item.isPurchased"
+          flex
+        />
       </md-list>
     `,
   };

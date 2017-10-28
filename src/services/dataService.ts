@@ -16,8 +16,8 @@ export interface DataService {
 
 export default function dataService(): DataService{
   let items: Item[] = [
-    { id: 0, text: 'ketchup', isPurchased: false },
-    { id: 1, text: 'mayo', isPurchased: false },
+    { id: 0, text: 'ketchup', isPurchased: true },
+    { id: 1, text: 'mayo', isPurchased: true },
     { id: 2, text: 'mustard', isPurchased: true },
     { id: 3, text: 'chili', isPurchased: true },
   ];

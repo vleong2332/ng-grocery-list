@@ -1,13 +1,39 @@
 .item {
+  margin-bottom: 1rem;
+  background-color: white;
+
   .item-toggle {
     // balances out 16px margin-bottom of checkboxes
     margin-top: 16px;
   }
+
   .item-name {
     box-sizing: border-box;
     width: 100%;
+    border: none;
+    &:focus {
+      outline: none;
+    }
   }
+
   .item-delete-wrapper {
     margin-left: 1rem;
+  }
+
+  &.is-editting {
+    background-color: rgb(63,81,181);
+
+    .item-toggle .md-icon {
+      border-color: white;
+    }
+
+    .item-name {
+      background-color: transparent;
+    }
+
+    .item-name,
+    .item-delete-icon {
+      color: white;
+    }
   }
 }
