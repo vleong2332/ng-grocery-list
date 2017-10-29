@@ -2,6 +2,9 @@
   "compilerOptions": {
     "removeComments": false,
     "sourceMap": true,
+    "lib": [
+      "dom"
+    ],
     "types": [
       "node"
     ],

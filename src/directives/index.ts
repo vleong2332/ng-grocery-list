@@ -1,3 +1,4 @@
+import contenteditable from './contenteditable';
 import nav from './nav';
 import itemList from './itemList';
 import item from './item';
@@ -14,6 +15,7 @@ export default {
       item,
       nav,
       newItemForm,
+      contenteditable,
     };
 
     Object.keys(directives).forEach(key => {

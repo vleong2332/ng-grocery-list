@@ -9,6 +9,7 @@ interface ItemScope extends angular.IScope {
 
 export default function item() {
   return {
+    require: 'contenteditable',
     scope: {
       id: '=',
       name: '=',
@@ -23,16 +24,23 @@ export default function item() {
 function controller(dataService: DataService, $scope: ItemScope) {
   let vm = this;
   vm.elevation = 1;
-  vm.isEditting = false;
+  vm.inEditMode = false;
   vm.toggleItem = dataService.toggleItem;
   vm.removeItem = dataService.removeItem;
-  vm.handleNameBlur = handleNameBlur;
+  vm.handleNameFocus = handleNameFocus;
+  vm.onBlur = handleNameBlur;
+
+  function handleNameFocus(): void {
+    if (!$scope.isPurchased) {
+      vm.inEditMode = true;
+    }
+  }
 
   function handleNameBlur(): void {
     if ($scope.name === '') {
       dataService.removeItem($scope.id);
     } else {
-      vm.isEditting = false;
+      vm.inEditMode = false;
     }
   }
 }
@@ -43,7 +51,7 @@ const template = `
     layout="row"
     layout-align="center center"
     flex
-    ng-class="{ 'is-editting': vm.isEditting }"
+    ng-class="{ 'is-editting': vm.inEditMode }"
     md-whiteframe="{{ vm.elevation }}"
     ng-mouseover="vm.elevation = vm.elevation + 2"
     ng-mouseleave="vm.elevation = 1"
@@ -58,14 +66,17 @@ const template = `
     </div>
 
     <div class="item-name-wrapper" flex>
-      <input
-        type="text"
+      <div
         class="item-name"
+        tabindex="1"
+        contenteditable="{{ !isPurchased }}"
+        blur-on-enter
         ng-model="name"
-        ng-focus="vm.isEditting=true"
-        ng-blur="vm.handleNameBlur()"
+        ng-focus="vm.handleNameFocus()"
         ng-disabled="isPurchased"
-      />
+      >
+        <pre>{{ name }}</pre>
+      </div>
     </div>
 
     <div class="item-delete-wrapper" flex="none">
