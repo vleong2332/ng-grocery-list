@@ -26,7 +26,6 @@ function link(
   $element.on('blur', handleBlur);
 
   if ($attrs.hasOwnProperty('blurOnEnter')) {
-    // $element.on('keypress', handleBlurOnEnter);
     $element.on('keypress', handleBlurOnEnter)
   }
 

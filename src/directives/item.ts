@@ -62,6 +62,7 @@ const template = `
         class="item-toggle"
         ng-model="isPurchased"
         ng-click="vm.toggleItem(id)"
+        aria-label="Toggle Item"
       ></md-checkbox>
     </div>
 
