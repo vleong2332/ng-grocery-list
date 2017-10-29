@@ -1,5 +1,5 @@
-import { DataService } from '../services/dataService';
-import '../style/item.less';
+import { ItemsService } from '../../services/itemsService';
+import './item.less';
 
 interface ItemScope extends angular.IScope {
   id: number;
@@ -7,7 +7,7 @@ interface ItemScope extends angular.IScope {
   isPurchased: boolean;
 }
 
-export default function item() {
+export default function item(): angular.IDirective {
   return {
     require: 'contenteditable',
     scope: {
@@ -21,12 +21,12 @@ export default function item() {
   };
 };
 
-function controller(dataService: DataService, $scope: ItemScope) {
+function controller(itemsService: ItemsService, $scope: ItemScope) {
   let vm = this;
   vm.elevation = 1;
   vm.inEditMode = false;
-  vm.toggleItem = dataService.toggleItem;
-  vm.removeItem = dataService.removeItem;
+  vm.toggle = itemsService.toggle;
+  vm.remove = itemsService.remove;
   vm.handleNameFocus = handleNameFocus;
   vm.onBlur = handleNameBlur;
 
@@ -38,7 +38,7 @@ function controller(dataService: DataService, $scope: ItemScope) {
 
   function handleNameBlur(): void {
     if ($scope.name === '') {
-      dataService.removeItem($scope.id);
+      itemsService.remove($scope.id);
     } else {
       vm.inEditMode = false;
     }
@@ -57,11 +57,11 @@ const template = `
     ng-mouseleave="vm.elevation = 1"
   >
 
-    <div class="item-toggle-wrapper" flex="none" layout="row" layout-align="center center">
+    <div class="item-toggle-wrapper" flex="none">
       <md-checkbox
         class="item-toggle"
         ng-model="isPurchased"
-        ng-click="vm.toggleItem(id)"
+        ng-click="vm.toggle(id)"
         aria-label="Toggle Item"
       ></md-checkbox>
     </div>
@@ -69,19 +69,17 @@ const template = `
     <div class="item-name-wrapper" flex>
       <div
         class="item-name"
-        tabindex="1"
         contenteditable="{{ !isPurchased }}"
         blur-on-enter
         ng-model="name"
         ng-focus="vm.handleNameFocus()"
-        ng-disabled="isPurchased"
       >
-        <pre>{{ name }}</pre>
+        {{ name }}
       </div>
     </div>
 
     <div class="item-delete-wrapper" flex="none">
-      <md-button class="item-delete md-icon-button md-secondary" ng-click="vm.removeItem(id)">
+      <md-button class="item-delete md-icon-button md-secondary" ng-click="vm.remove(id)">
         <md-icon class="item-delete-icon">delete</md-icon>
       </md-button>
     </div>

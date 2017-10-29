@@ -1,6 +1,6 @@
-import '../style/itemsPurchased.less';
+import './itemsPurchased.less';
 
-export default function itemsPurchased() {
+export default function itemsPurchased(): angular.IDirective {
   return {
     restrict: 'E',
     scope: {

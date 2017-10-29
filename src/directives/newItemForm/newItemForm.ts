@@ -1,7 +1,7 @@
-import { DataService } from '../services/dataService';
-import '../style/newItemForm.less'
+import { ItemsService } from '../../services/itemsService';
+import './newItemForm.less'
 
-export default function newItemForm() {
+export default function newItemForm(): angular.IDirective {
   return {
     restrict: 'E',
     scope: {},
@@ -12,7 +12,7 @@ export default function newItemForm() {
   };
 }
 
-function controller(dataService: DataService) {
+function controller(itemsService: ItemsService): void {
   let vm = this;
   vm.newItemName;
   vm.addNewItem = addNewItem;
@@ -25,7 +25,7 @@ function controller(dataService: DataService) {
   }
 
   function addNewItem(): void {
-    vm.newItemName && dataService.addItem(vm.newItemName);
+    vm.newItemName && itemsService.add(vm.newItemName);
     resetName();
   }
 
@@ -35,7 +35,7 @@ function controller(dataService: DataService) {
 }
 
 const template = `
-  <div class="new-item-form" layout="row" layout-align="center center">
+  <div class="new-item-form" flex layout="row" layout-align="center center">
 
     <div class="new-item-name-wrapper" flex>
       <md-input-container class="new-item-name" md-no-float>
@@ -51,8 +51,8 @@ const template = `
     <div class="new-item-add-wrapper" flex="none">
       <md-button
         class="new-item-add md-fab md-mini md-raised md-primary"
-        aria-label="Add"
         ng-click="vm.addNewItem()"
+        aria-label="Add"
       >
         <md-icon>add</md-icon>
       </md-button>

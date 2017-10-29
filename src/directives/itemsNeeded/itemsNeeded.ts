@@ -1,10 +1,10 @@
-import { DataService, Item } from '../services/dataService';
+import { ItemsService, Item } from '../../services/itemsService';
 
-interface ItemScope extends angular.IScope {
+interface ParentScope extends angular.IScope {
   items: Item[];
 }
 
-export default function itemsNeeded() {
+export default function itemsNeeded(): angular.IDirective {
   return {
     restrict: 'E',
     scope: {
@@ -16,7 +16,7 @@ export default function itemsNeeded() {
   };
 }
 
-function controller($scope: ItemScope) {
+function controller($scope: ParentScope): void {
   let vm = this;
   vm.message;
 
@@ -28,7 +28,7 @@ function controller($scope: ItemScope) {
     true
   );
 
-  function udpateMessage(newVal?: number, oldVal?: number) {
+  function udpateMessage(newVal?: number, oldVal?: number): void {
     const isInitial = oldVal === 0 && newVal === 0;
     const isDone = oldVal > 0 && newVal === 0;
 

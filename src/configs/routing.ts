@@ -1,4 +1,4 @@
-export default function routing($routeProvider: angular.route.IRouteProvider) {
+export default function routing($routeProvider: angular.route.IRouteProvider): void {
   $routeProvider
     .when('/needed', itemsNeeded)
     .when('/purchased', itemsPurchased)

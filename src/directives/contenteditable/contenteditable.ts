@@ -2,7 +2,7 @@ interface ParentScope extends angular.IScope {
   vm?: angular.IController;
 }
 
-// Hack? Why does RootElementService not have blur?
+// NOTE: Hack? Why does RootElementService not have blur?
 interface ElementWithBlur extends angular.IRootElementService {
   blur: () => void;
 }
@@ -34,8 +34,6 @@ function link(
   }
 
   function handleBlur(): void {
-    // Without $apply, the $digest may not or will not get called when onBlur updates anything,
-    // causing the ng-class expression to lags behind
     $scope.$apply(() => {
       const html = cleanName($element.html());
 
@@ -46,11 +44,11 @@ function link(
     });
   }
 
-  function handleBlurOnEnter($event: JQueryKeyEventObject): void {
-    $event.key === 'Enter' && $element.blur();
-  }
-
   function cleanName(text: string): string {
     return text.replace(/&nbsp;/gi, ' ').trim();
+  }
+
+  function handleBlurOnEnter($event: JQueryKeyEventObject): void {
+    $event.key === 'Enter' && $element.blur();
   }
 }

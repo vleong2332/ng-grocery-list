@@ -1,7 +1,7 @@
-import dataService from './dataService';
+import itemsService from './itemsService';
 
 export default {
   registerTo: function(ngModule: angular.IModule) {
-    ngModule.factory('dataService', dataService);
+    ngModule.factory('itemsService', itemsService);
   },
 };
