@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 export interface Item {
   id: number;
   text: string;
@@ -14,12 +16,9 @@ export interface ItemsService {
 }
 
 export default function itemsService(): ItemsService{
-  let items: Item[] = [
-    { id: 0, text: 'ketchup', isPurchased: true },
-    { id: 1, text: 'mayo', isPurchased: true },
-    { id: 2, text: 'mustard', isPurchased: true },
-    { id: 3, text: 'chili', isPurchased: true },
-  ];
+  let items: Item[];
+
+  init();
 
   return {
     getAll,
@@ -29,6 +28,13 @@ export default function itemsService(): ItemsService{
     remove,
     toggle,
   };
+
+  function init(): void {
+    const storedData = localStorage.getItem('groceryList');
+    items = storedData
+      ? angular.fromJson(storedData)
+      : [];
+  }
 
   function getAll(): Item[] {
     return items;
@@ -48,10 +54,12 @@ export default function itemsService(): ItemsService{
       text: name,
       isPurchased: false,
     });
+    syncToStore();
   }
 
   function remove(id: number): void {
     items = items.filter(i => i.id !== id);
+    syncToStore();
   }
 
   function toggle(id: number): void {
@@ -61,5 +69,10 @@ export default function itemsService(): ItemsService{
       }
       return i;
     });
+    syncToStore();
+  }
+
+  function syncToStore(): void {
+    localStorage.setItem('groceryList', angular.toJson(items));
   }
 }
