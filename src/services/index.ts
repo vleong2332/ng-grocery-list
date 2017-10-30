@@ -1,7 +1,5 @@
 import itemsService from './itemsService';
 
-export default {
-  registerTo: function(ngModule: angular.IModule) {
-    ngModule.factory('itemsService', itemsService);
-  },
-};
+export default function registerServices(ngModule: angular.IModule) {
+  ngModule.factory('itemsService', itemsService);
+}

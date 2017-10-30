@@ -1,20 +1,21 @@
 import * as angular from 'angular';
-import 'angular-route';
-import 'angular-material';
 
 import registerConfigs from './configs';
-import registerControllers from './controllers';
-import services from './services';
+import registerServices from './services';
 import registerDirectives from './directives';
 
-import './index.less';
 import 'angular-material/angular-material.css';
+import './index.less';
 
 (() => {
-  const ngModule = angular.module('app', ['ngRoute', 'ngMaterial']);
+  'use strict';
+
+  const ngModule = angular.module('app', [
+    require('angular-route'),
+    require('angular-material'),
+  ]);
 
   registerConfigs(ngModule);
-  registerControllers(ngModule);
-  services.registerTo(ngModule);
+  registerServices(ngModule);
   registerDirectives(ngModule);
 })();

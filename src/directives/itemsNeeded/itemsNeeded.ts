@@ -1,32 +1,31 @@
 import { ItemsService, Item } from '../../services/itemsService';
 
-interface ParentScope extends angular.IScope {
-  items: Item[];
-}
-
 export default function itemsNeeded(): angular.IDirective {
   return {
     restrict: 'E',
-    scope: {
-      items: '=',
-    },
     controllerAs: 'vm',
     controller,
     template,
   };
 }
 
-function controller($scope: ParentScope): void {
+function controller(itemsService: ItemsService, $scope: angular.IScope): void {
   let vm = this;
+  vm.items;
   vm.message;
 
   $scope.$watch(
-    () => $scope.items.length,
+    () => itemsService.getNeeded().length,
     (newVal, oldVal) => {
+      updateItems();
       udpateMessage(newVal, oldVal);
     },
-    true
+    true,
   );
+
+  function updateItems(): void {
+    vm.items = itemsService.getNeeded();
+  }
 
   function udpateMessage(newVal?: number, oldVal?: number): void {
     const isInitial = oldVal === 0 && newVal === 0;
@@ -36,7 +35,7 @@ function controller($scope: ParentScope): void {
       ? 'No items needed'
       : isDone
         ? 'All done!'
-        : `${$scope.items.length} items left`;
+        : `${vm.items.length} items left`;
   }
 }
 
@@ -49,6 +48,6 @@ const template = `
       <h3 class="item-count md-title">{{ vm.message }}</h3>
     </div>
 
-    <item-list items="items"></item-list>
+    <item-list items="vm.items"></item-list>
   </div>
 `;
