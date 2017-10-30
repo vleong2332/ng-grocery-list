@@ -16,7 +16,7 @@ function controller(itemsService: ItemsService, $scope: angular.IScope) {
   vm.items;
 
   $scope.$watch(
-    () => itemsService.getNeeded().length,
+    () => itemsService.getPurchased().length,
     () => {
       updateItems();
     },
