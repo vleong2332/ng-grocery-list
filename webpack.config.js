@@ -26,8 +26,7 @@ const config = {
 
 if (process.env.NODE_ENV === 'production') {
   config.output.path = __dirname + '/dist';
-  // NOTE: Minify once you figure out why ng-annotate-loader is not working
-  // config.plugins.push(new webpack.optimize.UglifyJsPlugin());
+  config.plugins.push(new webpack.optimize.UglifyJsPlugin());
 }
 
 module.exports = config;

@@ -12,6 +12,7 @@ export default function newItemForm(): angular.IDirective {
   };
 }
 
+controller.$inject = ['itemsService'];
 function controller(itemsService: ItemsService): void {
   let vm = this;
   vm.newItemName;

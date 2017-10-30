@@ -10,6 +10,7 @@ export default function itemsPurchased(): angular.IDirective {
   };
 };
 
+controller.$inject = ['itemsService', '$scope'];
 function controller(itemsService: ItemsService, $scope: angular.IScope) {
   let vm = this;
   vm.items;

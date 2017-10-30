@@ -9,6 +9,7 @@ export default function itemsNeeded(): angular.IDirective {
   };
 }
 
+controller.$inject = ['itemsService', '$scope'];
 function controller(itemsService: ItemsService, $scope: angular.IScope): void {
   let vm = this;
   vm.items;

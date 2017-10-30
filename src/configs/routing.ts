@@ -1,3 +1,4 @@
+routing.$inject = ['$routeProvider'];
 export default function routing($routeProvider: angular.route.IRouteProvider): void {
   $routeProvider
     .when('/needed', {

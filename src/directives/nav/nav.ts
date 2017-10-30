@@ -10,6 +10,7 @@ export default function nav(): angular.IDirective {
   };
 }
 
+controller.$inject = ['$location', '$scope'];
 function controller($location:angular.ILocationService, $scope: angular.IScope): void {
   let vm = this;
   vm.active;

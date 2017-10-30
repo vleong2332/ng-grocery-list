@@ -21,6 +21,7 @@ export default function item(): angular.IDirective {
   };
 };
 
+controller.$inject = ['itemsService', '$scope'];
 function controller(itemsService: ItemsService, $scope: ItemScope) {
   let vm = this;
   vm.elevation = 1;
